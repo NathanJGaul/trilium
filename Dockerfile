@@ -10,8 +10,7 @@ COPY package.json package-lock.json ./
 
 # Install app dependencies
 RUN apt-get update && \
-    apt-get -qy install \
-        autoconf \
+    apt-get -qy install autoconf \
         automake \
         g++ \
         gcc \
