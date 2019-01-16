@@ -18,7 +18,7 @@ RUN apt-get update && \
         make \
         nasm \
         libpng-dev \
-    && npm install --production \
+    && npm install --production
 
 # Bundle app source
 COPY . .
