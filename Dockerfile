@@ -1,4 +1,5 @@
-FROM node:10.15.0-alpine
+FROM resin/rpi-raspbian:latest
+ENTRYPOINT []
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,8 +9,8 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # Install app dependencies
-RUN set -x \
-    && apk add --no-cache --virtual .build-dependencies \
+RUN apt-get update && \
+    apt-get -qy install \
         autoconf \
         automake \
         g++ \
@@ -19,7 +20,6 @@ RUN set -x \
         nasm \
         libpng-dev \
     && npm install --production \
-    && apk del .build-dependencies
 
 # Bundle app source
 COPY . .
